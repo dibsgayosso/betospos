@@ -506,7 +506,7 @@ if (is_on_demo_host()) { ?>
 				
                 <li>
 					<?php
-					if ($this->config->item('track_payment_types') && $this->Register->is_register_log_open()) {
+					if ($this->config->item('track_payment_types') && $this->Register->is_register_log_open() && $this->Employee->has_module_action_permission('sales', 'open_close_register', $this->Employee->get_logged_in_employee_info()->person_id)) {
 						$continue = $this->config->item('timeclock') && !$this->Employee->get_logged_in_employee_info()->not_required_to_clock_in ? 'timeclocks' : 'logout';
 						echo anchor("sales/closeregister?continue=$continue",'<i class="icon ti-power-off"></i><span class="text">'.lang("common_logout").'</span>', array('tabindex' => '-1'));
 					} else {
@@ -767,7 +767,7 @@ if (is_on_demo_host()) { ?>
 								?>								
 								<li>
 								<?php
-									if ($this->config->item('track_payment_types') && $this->Register->is_register_log_open()) {
+									if ($this->config->item('track_payment_types') && $this->Register->is_register_log_open() && $this->Employee->has_module_action_permission('sales', 'open_close_register', $this->Employee->get_logged_in_employee_info()->person_id)) {
 										$continue = $this->config->item('timeclock') && !$this->Employee->get_logged_in_employee_info()->not_required_to_clock_in ? 'timeclocks' : 'logout';
 										echo anchor("sales/closeregister?continue=$continue",'<i class="ion-power"></i><span class="text">'.lang("common_logout").'</span>',array('class'=>'logout_button','tabindex' => '-1'));
 									} else {

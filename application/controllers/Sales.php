@@ -62,7 +62,19 @@ class Sales extends Secure_area
 		cache_item_and_item_kit_cart_info($this->cart->get_items());
 		
 	}	
-	
+
+	function can_open_close_register()
+	{
+		return $this->Employee->has_module_action_permission('sales', 'open_close_register', $this->Employee->get_logged_in_employee_info()->person_id);
+	}
+
+	function require_open_close_register_permission()
+	{
+		if (!$this->can_open_close_register())
+		{
+			redirect('no_access/sales');
+		}
+	}
 	
 	function index($dont_switch_employee = 0)
 	{	
@@ -124,6 +136,7 @@ class Sales extends Secure_area
 			
 			if ($this->input->post('opening_amount') != '' && !$this->Register->is_register_log_open())  
 			{
+				$this->require_open_close_register_permission();
 				$now = date('Y-m-d H:i:s');
 
 				$cash_register = new stdClass();
@@ -170,6 +183,7 @@ class Sales extends Secure_area
 			} 
 			else 
 			{
+				$this->require_open_close_register_permission();
 				
 				$this->load->view('sales/opening_amount', array('previous_closings' => $this->Register->get_closing_amounts($this->Register->get_last_closing_register_log_id($this->Employee->get_logged_in_employee_current_register_id())),'denominations' => $this->Register->get_register_currency_denominations()->result_array()));
 			}
@@ -277,6 +291,8 @@ class Sales extends Secure_area
 	
 	function closeregister() 
 	{
+		$this->require_open_close_register_permission();
+
 		if (!$this->Register->is_register_log_open()) 
 		{
 			redirect(site_url('home'));

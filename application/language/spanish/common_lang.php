@@ -1192,6 +1192,7 @@ $lang['common_payment_success'] = 'Pago exitoso';
 $lang['common_item_inventory_changed_in_system'] = 'El inventario de artículos cambió en %BRANDING_SHORT_NAME%';
 
 $lang['common_add_remove_amounts_from_cash_drawer'] = 'Añadir Eliminar importes de la caja registradora';
+$lang['common_open_close_register'] = 'Abrir/Cerrar caja registradora';
 
 $lang['common_mr.'] = 'Señor.';
 $lang['common_mrs.'] = 'Sra.';
