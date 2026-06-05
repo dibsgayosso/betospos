@@ -1151,9 +1151,11 @@ if ($this->session->userdata('use_manual_entry'))
 						<li><?php echo anchor(site_url('sales/register_add_subtract/add/common_cash'), '<i class="ion-cash"></i> ' . lang('sales_add_cash_to_register'), array('class' => '')); ?></li>
 						<li><?php echo anchor(site_url('sales/register_add_subtract/subtract/common_cash'), '<i class="ion-log-out"></i> ' . lang('common_remove_cash_from_register'), array('class' => '')); ?></li>
 
+						<?php if ($this->Employee->has_module_action_permission('sales', 'open_close_register', $this->Employee->get_logged_in_employee_info()->person_id)) { ?>
 						<li class="danger">
 							<?php echo anchor(site_url('sales/closeregister?continue=closeoutreceipt'), '<i class="ion-close-circled"></i> ' . lang('sales_close_register'), array('class' => '')); ?>
 						</li>
+						<?php } ?>
 					<?php } ?>
 
 					<?php if ($this->config->item('enable_tips')) { ?>

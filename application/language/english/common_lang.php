@@ -1206,6 +1206,7 @@ $lang['common_payment_success'] = 'Payment Successful';
 $lang['common_item_inventory_changed_in_system'] = 'Item inventory changed in %BRANDING_SHORT_NAME%';
 
 $lang['common_add_remove_amounts_from_cash_drawer'] = 'Add Remove Amounts From Cash Drawer';
+$lang['common_open_close_register'] = 'Open/Close Register';
 
 $lang['common_mr.'] = 'Mr.';
 $lang['common_mrs.'] = 'Mrs.';
